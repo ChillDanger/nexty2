@@ -55,7 +55,6 @@ export async function HeroSection() {
                   text={profile.headlineStaticText}
                   words={profile.headlineAnimatedWords}
                   duration={profile.headlineAnimationDuration || 3000}
-                  className="text-xl @md/hero:text-2xl @lg/hero:text-3xl text-muted-foreground font-medium"
                 />
               ) : (
                 <p className="text-xl @md/hero:text-2xl @lg/hero:text-3xl text-muted-foreground font-medium">
