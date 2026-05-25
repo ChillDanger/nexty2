@@ -1,0 +1,88 @@
+{
+  "_type": "profile",
+  "_id": "singleton-profile",
+  "firstName": "Dan",
+  "lastName": "Alswanger",
+  "headline": "Marketing Major with 3 years of experience",
+  "headlineStaticText": "Ask me about my ",
+  "headlineAnimatedWords": [
+    "Adult Baseball League",
+    "my time at UCONN",
+    "Marketing Degree",
+    "Work Experience",
+    "hobbies"
+  ],
+  "headlineAnimationDuration": 3000,
+  "shortBio": "I have a passion for marketing and a knack for creating engaging campaigns that resonate with audiences. With a background in both traditional and digital marketing, I bring a versatile skill set to the table. ",
+  "fullBio": [
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "marks": [],
+          "text": "I'm a passionate full-stack developer with over 7 years of experience crafting elegant solutions to complex problems. My journey in tech began with a fascination for how things work, which led me to pursue Computer Science and eventually specialize in web development and artificial intelligence."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        { "_type": "span", "marks": ["strong"], "text": "My Approach" },
+        {
+          "_type": "span",
+          "marks": [],
+          "text": ": I believe in writing clean, maintainable code that scales. I'm a strong advocate for test-driven development and continuous integration. My experience spans from startups to enterprise companies, giving me a unique perspective on different development methodologies and best practices."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        { "_type": "span", "marks": ["strong"], "text": "What I Do" },
+        {
+          "_type": "span",
+          "marks": [],
+          "text": ": I specialize in building full-stack applications using React, Next.js, and Node.js. Recently, I've been focusing on integrating AI capabilities into web applications, leveraging technologies like OpenAI's GPT models and TensorFlow. I'm also experienced in cloud infrastructure, particularly AWS and Vercel."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "marks": [],
+          "text": "When I'm not coding, you can find me contributing to open-source projects, writing technical blog posts, or mentoring aspiring developers. I'm always excited to learn new technologies and share knowledge with the community."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    }
+  ],
+  "email": "dalswanger@gmail.com",
+  "phone": "+1 (555) 123-4567",
+  "location": "Fairfield County, CT(Remote)",
+  "availability": "open",
+  "socialLinks": {
+    "github": "https://github.com/ChillDanger",
+    "linkedin": "https://linkedin.com/in/DanielAlswanger",
+    "twitter": "https://twitter.com/johndoe",
+    "website": "https://danielalswanger.com",
+    "Instagram": "https://instagram.com/danielalswanger",
+    "News Article": "https://dev.to/johndoe"
+  },
+  "yearsOfExperience": 7,
+  "stats": [
+    { "label": "Projects Completed", "value": "5+" },
+    { "label": "Client Satisfaction", "value": "100%" },
+    { "label": "Years Experience", "value": "2+" },
+    { "label": "Technologies Mastered", "value": "30+" }
+  ]
+}
