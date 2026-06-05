@@ -5,6 +5,10 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { SanityLive } from "@/sanity/lib/live";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
+import SidebarToggle from "@/components/SidebarToggle";
+import Script from "next/script";
+import { FloatingDock } from "@/components/FloatingDock";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,12 +21,35 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Daniel Alswanger Portfolio",
-  description: "Dan Alswanger's personal portfolio",
-    icons: {
-    icon: "/favicon.ico",
+  title: "Daniel Alswanger | AWS & Next.js Developer",
+  description:
+    "From Fairfield CT, UCONN Digital Marketing Graduate,",
+  keywords: [
+    "Daniel Alswanger",
+    "Fairfield CT",
+    "Dan Alswanger",
+    "Daniel Alswanger UCONN",
+    "Alswanger University of Connecticut",
+    "Dan Als",
+    "Dan Alswanger Ludlowe High School",
+    "FLHS Daniel Alswanger",
+    "Daniel Alswanger Tennis",
+  ],
+  authors: [{ name: "Daniel Alswanger" }],
+  creator: "Daniel Alswanger",
+  openGraph: {
+    title: "Daniel Alswanger | Bachelors in Digital Marketing",
+    description:
+      "From Fairfield CT, UCONN Digital Marketing Graduate,",
+    images: ["/og-image.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og-image.png"],
+  
   },
 };
+   
 
 export default function RootLayout({
   children,
@@ -34,7 +61,11 @@ export default function RootLayout({
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
           
-          <SidebarProvider> 
+          <Script
+            src="https://cdn.platform.openai.com/deployments/chatkit/chatkit.js"
+            strategy="afterInteractive"
+          />
+          <SidebarProvider defaultOpen={false}> 
             <SidebarInset>
 
               {children}
@@ -42,8 +73,8 @@ export default function RootLayout({
             </SidebarInset>
             <AppSidebar side="right" />
 
-            {/* <Floatingdock/>
-            <Sidebartoggle/> */}
+            <FloatingDock/>
+            <SidebarToggle/>
 
               {/* Mode Toggle - Desktop: bottom right next to AI chat, Mobile: top right next to burger menu */}
               {/* <div className="fixed md:bottom-6 md:right-24 top-4 right-18 md:top-auto md:left-auto z-20">

@@ -21,7 +21,7 @@
         {
           "_type": "span",
           "marks": [],
-          "text": "I'm a passionate full-stack developer with over 7 years of experience crafting elegant solutions to complex problems. My journey in tech began with a fascination for how things work, which led me to pursue Computer Science and eventually specialize in web development and artificial intelligence."
+          "text": "I'm a passionate full-stack developer who can craft elegant solutions to complex problems. My journey in tech began with a fascination for how things work, which led me to pursue web development and artificial intelligence."
         }
       ],
       "markDefs": [],
@@ -75,7 +75,7 @@
     "linkedin": "https://linkedin.com/in/DanielAlswanger",
     "twitter": "https://twitter.com/johndoe",
     "website": "https://danielalswanger.com",
-    "Instagram": "https://instagram.com/danielalswanger",
+    "instagram": "https://instagram.com/danielalswanger",
     "News Article": "https://dev.to/johndoe"
   },
   "yearsOfExperience": 7,

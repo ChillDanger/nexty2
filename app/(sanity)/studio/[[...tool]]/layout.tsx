@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Daniel Alswanger Portfolio",
-  description: "Daniel Alswanger Fairfield CT Portfolio",
+  description: "Dan Alswanger's personal portfolio",
+    icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 function layout({ children }: { children: React.ReactNode }) {

@@ -6,4 +6,6 @@ import { client } from "./client";
 
 export const { sanityFetch, SanityLive } = defineLive({
   client,
+  serverToken: process.env.SANITY_API_TOKEN, // Add your Sanity API token here
+  browserToken: process.env.SANITY_API_TOKEN, // Optional: Add a separate token for client-side requests if needed
 });

@@ -3186,6 +3186,13 @@
               },
               "optional": true
             },
+            "instagram": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "string"
+              },
+              "optional": true
+            },
             "website": {
               "type": "objectAttribute",
               "value": {
