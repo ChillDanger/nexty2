@@ -17,7 +17,7 @@ async function PortfolioContent() {
       <HeroSection />
       <AboutSection />
       <TestimonialsSection />
-      <SkillsSection />
+      {/* <SkillsSection /> */}
       <ExperienceSection />
       <EducationSection />
       <ProjectsSection />
