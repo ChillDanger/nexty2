@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
+import type { Metadata } from "next";
+import SidebarToggle from "@/components/SidebarToggle";
+import { Geist, Geist_Mono } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { SanityLive } from "@/sanity/lib/live";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
-import SidebarToggle from "@/components/SidebarToggle";
-import Script from "next/script";
 import { FloatingDock } from "@/components/FloatingDock";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import Script from "next/script";
+import { AppSidebar } from "@/components/app-sidebar";
 
 
 const geistSans = Geist({
@@ -37,11 +37,13 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Daniel Alswanger" }],
   creator: "Daniel Alswanger",
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     title: "Daniel Alswanger | Bachelors in Digital Marketing",
     description:
       "From Fairfield CT, UCONN Digital Marketing Graduate,",
-    images: ["/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
