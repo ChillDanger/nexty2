@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Daniel Alswanger | AWS & Next.js Developer",
+  title: "Daniel Alswanger's Portfolio",
   description:
     "From Fairfield CT, UCONN Digital Marketing Graduate,",
   keywords: [
@@ -53,7 +53,17 @@ export const metadata: Metadata = {
   
   },
 };
-   
+  const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Daniel Alswanger",
+  url: "https://danielalswanger.com",
+  image: "https://danielalswanger.com/profile.jpg",
+  alumniOf: "University of Connecticut",
+  sameAs: [
+    "https://www.linkedin.com/in/danielalswanger",
+  ],
+};
 
 export default function RootLayout({
   children,
@@ -73,7 +83,15 @@ export default function RootLayout({
           <Script
             src="https://cdn.platform.openai.com/deployments/chatkit/chatkit.js"
             strategy="afterInteractive"
+            
           />
+          <Script
+            id="person-schema"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personSchema),
+  }}
+/>
           <SidebarProvider defaultOpen={false}> 
             <SidebarInset>
 
