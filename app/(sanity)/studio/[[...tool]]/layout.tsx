@@ -1,19 +1,42 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Daniel Alswanger Portfolio",
+  title: "Daniel Alswanger",
   description: "Dan Alswanger's personal portfolio",
-    icons: {
+  icons: {
     icon: "/favicon.ico",
   },
 };
 
-function layout({ children }: { children: React.ReactNode }) {
+export default function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Daniel Alswanger",
+    url: "https://danielalswanger.com",
+    image: "https://danielalswanger.com/profile.jpg",
+    alumniOf: "University of Connecticut",
+    sameAs: [
+      "https://www.linkedin.com/in/DanielAlswanger",
+      "https://github.com/YOUR-GITHUB",
+    ],
+  };
+
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personSchema),
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
-
-export default layout;
