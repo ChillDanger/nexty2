@@ -10,6 +10,9 @@ import Script from "next/script";
 import { AppSidebar } from "@/components/app-sidebar";
 import { ThemeProvider } from "@/components/sections/ThemeProvider";
 import { ModeToggle } from "@/components/DarkModeToggle";
+import { ContactSection } from "@/components/sections/ContactSection";
+import { ContactForm } from "@/components/ContactForm";
+import LoadingCube from "@/components/sections/LoadingCube";
 
 
 const geistSans = Geist({
@@ -70,7 +73,40 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  if (process.env.NEXT_PUBLIC_MAINTENANCE_MODE === "true") {
+    return (
+      <html lang="en">
+        <body>
+          <div className="flex justify-center">
+  <div className="w-[600px]">
+    <ContactForm />
+  </div>
+</div>
+        
+        <div className="flex justify-center py-12">
+          <LoadingCube />
+        </div>
+          
+        <div className="text-center">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-[-0.03em] leading-tight">
+  Site Under Maintenance
+</h1>
+
+<p className="mt-6 text-xl md:text-2xl text-slate-400">
+  DanielAlswanger.com is currently being updated.
+</p>
+
+<p className="mt-3 text-lg text-slate-500">
+  Please check back soon.
+        </p>
+                    
+          </div>
+        </body>
+      </html>
+    );
+  }
   return (
+    
     <ClerkProvider>
       <html lang="en"  suppressHydrationWarning>
         <body className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
