@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Daniel Alswanger's Portfolio",
+  title: "Daniel Alswanger",
   description:
     "From Fairfield CT, UCONN Digital Marketing Graduate,",
   keywords: [
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/og-image.png"],
+    images: ["/og-image.jpg"],
   
   },
 };
@@ -85,11 +85,10 @@ export default function RootLayout({
             strategy="afterInteractive"
             
           />
-          <Script
-            id="person-schema"
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-            __html: JSON.stringify(personSchema),
+          <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify(personSchema),
   }}
 />
           <SidebarProvider defaultOpen={false}> 
