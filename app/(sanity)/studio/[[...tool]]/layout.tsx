@@ -24,7 +24,7 @@ export default function Layout({
       "https://www.linkedin.com/in/DanielAlswanger",
       "https://github.com/YOUR-GITHUB",
     ],
-  };
+  };git
 
   return (
     <html lang="en">
