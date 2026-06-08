@@ -13,6 +13,11 @@ import { ModeToggle } from "@/components/DarkModeToggle";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { ContactForm } from "@/components/ContactForm";
 import LoadingCube from "@/components/sections/LoadingCube";
+import CursorFollower from "@/components/CursorFollower";
+import FloatingRobot from "@/components/sections/FloatingRobot";
+import Image from "next/image";
+import { Main } from "next/document";
+import MainframeMaintenancePage from "@/components/Maintenance/MainframeMaintenancePage";
 
 
 const geistSans = Geist({
@@ -77,11 +82,16 @@ export default function RootLayout({
     return (
       <html lang="en">
         <body>
+            <MainframeMaintenancePage />
+
+            <CursorFollower />
+          
+
           <div className="flex justify-center">
-  <div className="w-[600px]">
-    <ContactForm />
-  </div>
-</div>
+          <div className="w-[600px]">
+               <ContactForm />
+         </div>
+        </div>
         
         <div className="flex justify-center py-12">
           <LoadingCube />

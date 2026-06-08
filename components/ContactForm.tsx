@@ -38,19 +38,13 @@ export function ContactForm() {
   };
 
   return (
-    <div className="@container/form bg-card border rounded-lg p-4 @md/form:p-6">
-      <h3 className="text-xl @md/form:text-2xl font-semibold mb-6">
+    <div className="@container/form w-full max-w-md relative overflow-hidden rounded-3xl border border-white/10 bg-black/20 backdrop-blur-3xl shadow-2xl shadow-black/30 p-6 @md/form:p-8">
+      <h3 className="text-2xl font-medium tracking-tight text-white mb-8">
         Send a Message
       </h3>
 
       {status.type && (
-        <div
-          className={`mb-4 p-3 rounded-lg text-sm ${
-            status.type === "success"
-              ? "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300"
-              : "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300"
-          }`}
-        >
+        <div className="mb-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-4 text-sm text-white animate-in fade-in">
           {status.message}
         </div>
       )}
@@ -59,7 +53,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="name"
-            className="block text-xs @md/form:text-sm font-medium mb-2"
+            className="mb-2 block text-xs uppercase tracking-[0.15em] text-white/50"
           >
             Name
           </label>
@@ -67,7 +61,7 @@ export function ContactForm() {
             type="text"
             id="name"
             name="name"
-            className="w-full px-3 py-1.5 @md/form:px-4 @md/form:py-2 rounded-lg border bg-background focus:outline-none focus:ring-2 focus:ring-primary text-sm @md/form:text-base"
+            className="w-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-5 py-4 text-white placeholder:text-white/40 transition-all duration-300 focus:border-white/30 focus:bg-white/10 focus:outline-none focus:ring-0"
             placeholder="Your name"
             required
             disabled={isPending}
@@ -77,7 +71,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="email"
-            className="block text-xs @md/form:text-sm font-medium mb-2"
+            className="mb-2 block text-xs uppercase tracking-[0.15em] text-white/50"
           >
             Email
           </label>
@@ -85,7 +79,7 @@ export function ContactForm() {
             type="email"
             id="email"
             name="email"
-            className="w-full px-3 py-1.5 @md/form:px-4 @md/form:py-2 rounded-lg border bg-background focus:outline-none focus:ring-2 focus:ring-primary text-sm @md/form:text-base"
+            className="w-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-5 py-4 text-white placeholder:text-white/40 transition-all duration-300 focus:border-white/30 focus:bg-white/10 focus:outline-none focus:ring-0"
             placeholder="your.email@example.com"
             required
             disabled={isPending}
@@ -95,7 +89,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="subject"
-            className="block text-xs @md/form:text-sm font-medium mb-2"
+            className="mb-2 block text-xs uppercase tracking-[0.15em] text-white/50"
           >
             Subject
           </label>
@@ -103,7 +97,7 @@ export function ContactForm() {
             type="text"
             id="subject"
             name="subject"
-            className="w-full px-3 py-1.5 @md/form:px-4 @md/form:py-2 rounded-lg border bg-background focus:outline-none focus:ring-2 focus:ring-primary text-sm @md/form:text-base"
+            className="w-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-5 py-4 text-white placeholder:text-white/40 transition-all duration-300 focus:border-white/30 focus:bg-white/10 focus:outline-none focus:ring-0"
             placeholder="What's this about?"
             required
             disabled={isPending}
@@ -113,7 +107,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="message"
-            className="block text-xs @md/form:text-sm font-medium mb-2"
+            className="mb-2 block text-xs uppercase tracking-[0.15em] text-white/50"
           >
             Message
           </label>
@@ -121,7 +115,7 @@ export function ContactForm() {
             id="message"
             name="message"
             rows={5}
-            className="w-full px-3 py-1.5 @md/form:px-4 @md/form:py-2 rounded-lg border bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none text-sm @md/form:text-base"
+            className="w-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-5 py-4 text-white placeholder:text-white/40 transition-all duration-300 focus:border-white/30 focus:bg-white/10 focus:outline-none focus:ring-0"
             placeholder="Tell me about your project..."
             required
             disabled={isPending}
@@ -131,7 +125,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={isPending}
-          className="w-full px-4 py-2 @md/form:px-6 @md/form:py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors font-medium text-sm @md/form:text-base disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full rounded-2xl bg-white px-6 py-4 font-medium text-black transition-all duration-300 hover:scale-[1.02] hover:bg-white/90 active:scale-[0.98] disabled:opacity-50"
         >
           {isPending ? "Sending..." : "Send Message"}
         </button>
