@@ -6,7 +6,7 @@ import Script from "next/script";
 import { AppSidebar } from "@/components/app-sidebar";
 import { ModeToggle } from "@/components/DarkModeToggle";
 import { FloatingDock } from "@/components/FloatingDock";
-import MainframeMaintenancePage from "@/components/maintenance/MainframeMaintenancePage";
+import MainframeMaintenancePage from "@/components/Maintenance/MainframeMaintenancePage";
 import SidebarToggle from "@/components/SidebarToggle";
 import { ThemeProvider } from "@/components/sections/ThemeProvider";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
