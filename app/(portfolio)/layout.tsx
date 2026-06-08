@@ -1,24 +1,16 @@
 import "../globals.css";
-import type { Metadata } from "next";
-import SidebarToggle from "@/components/SidebarToggle";
-import { Geist, Geist_Mono } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
-import { SanityLive } from "@/sanity/lib/live";
-import { FloatingDock } from "@/components/FloatingDock";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { AppSidebar } from "@/components/app-sidebar";
-import { ThemeProvider } from "@/components/sections/ThemeProvider";
 import { ModeToggle } from "@/components/DarkModeToggle";
-import { ContactSection } from "@/components/sections/ContactSection";
-import { ContactForm } from "@/components/ContactForm";
-import LoadingCube from "@/components/sections/LoadingCube";
-import CursorFollower from "@/components/CursorFollower";
-import FloatingRobot from "@/components/sections/FloatingRobot";
-import Image from "next/image";
-import { Main } from "next/document";
-import MainframeMaintenancePage from "@/components/Maintenance/MainframeMaintenancePage";
-
+import { FloatingDock } from "@/components/FloatingDock";
+import MainframeMaintenancePage from "@/components/maintenance/MainframeMaintenancePage";
+import SidebarToggle from "@/components/SidebarToggle";
+import { ThemeProvider } from "@/components/sections/ThemeProvider";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { SanityLive } from "@/sanity/lib/live";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,8 +24,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Daniel Alswanger",
-  description:
-    "From Fairfield CT, UCONN Digital Marketing Graduate,",
+  description: "From Fairfield CT, UCONN Digital Marketing Graduate,",
   keywords: [
     "Daniel Alswanger",
     "Fairfield CT",
@@ -52,25 +43,21 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Daniel Alswanger | Bachelors in Digital Marketing",
-    description:
-      "From Fairfield CT, UCONN Digital Marketing Graduate,",
+    description: "From Fairfield CT, UCONN Digital Marketing Graduate,",
   },
   twitter: {
     card: "summary_large_image",
     images: ["/og-image.jpg"],
-  
   },
 };
-  const personSchema = {
+const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Daniel Alswanger",
   url: "https://danielalswanger.com",
   image: "https://danielalswanger.com/profile.jpg",
   alumniOf: "University of Connecticut",
-  sameAs: [
-    "https://www.linkedin.com/in/danielalswanger",
-  ],
+  sameAs: ["https://www.linkedin.com/in/danielalswanger"],
 };
 
 export default function RootLayout({
@@ -78,86 +65,64 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const fontLinks = (
+    <head>
+      <link
+        rel="stylesheet"
+        href="https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Medium"
+      />
+      <link
+        rel="stylesheet"
+        href="https://db.onlinewebfonts.com/c/1aa3377e489837a26d019bba501e779d?family=HelveticaNowDisplayW01-Rg"
+      />
+    </head>
+  );
+
   if (process.env.NEXT_PUBLIC_MAINTENANCE_MODE === "true") {
     return (
       <html lang="en">
-        <body>
-            <MainframeMaintenancePage />
-
-            <CursorFollower />
-          
-
-          <div className="flex justify-center">
-          <div className="w-[600px]">
-               <ContactForm />
-         </div>
-        </div>
-        
-        <div className="flex justify-center py-12">
-          <LoadingCube />
-        </div>
-          
-        <div className="text-center">
-        <h1 className="text-5xl md:text-7xl font-bold tracking-[-0.03em] leading-tight">
-  Site Under Maintenance
-</h1>
-
-<p className="mt-6 text-xl md:text-2xl text-slate-400">
-  DanielAlswanger.com is currently being updated.
-</p>
-
-<p className="mt-3 text-lg text-slate-500">
-  Please check back soon.
-        </p>
-                    
-          </div>
+        {fontLinks}
+        <body className="maintenance-shell overflow-hidden bg-white text-black">
+          <MainframeMaintenancePage />
         </body>
       </html>
     );
   }
   return (
-    
     <ClerkProvider>
-      <html lang="en"  suppressHydrationWarning>
-        <body className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+      <html lang="en" suppressHydrationWarning>
+        {fontLinks}
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-          <Script
-            src="https://cdn.platform.openai.com/deployments/chatkit/chatkit.js"
-            strategy="afterInteractive"
-            
-          />
-          <script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify(personSchema),
-  }}
-/>
-          <SidebarProvider defaultOpen={false}> 
-            <SidebarInset>
-
-              {children}
-            
-            </SidebarInset>
-            <AppSidebar side="right" />
-
-            <FloatingDock/>
-            <SidebarToggle/>
+            <Script
+              src="https://cdn.platform.openai.com/deployments/chatkit/chatkit.js"
+              strategy="afterInteractive"
+            />
+            <script type="application/ld+json">
+              {JSON.stringify(personSchema)}
+            </script>
+            <SidebarProvider defaultOpen={false}>
+              <SidebarInset>{children}</SidebarInset>
+              <AppSidebar side="right" />
+              <FloatingDock />
+              <SidebarToggle />
 
               {/* Mode Toggle - Desktop: bottom right next to AI chat, Mobile: top right next to burger menu */}
-              <div className="fixed md:bottom-6 md:right-24 top-4 right-18 md:top-auto md:left-auto z-20">
-                <div className="w-10 h-10 md:w-12 md:h-12">
+              <div className="fixed top-4 right-18 z-20 md:top-auto md:right-24 md:bottom-6 md:left-auto">
+                <div className="h-10 w-10 md:h-12 md:w-12">
                   <ModeToggle />
                 </div>
               </div>
+            </SidebarProvider>
 
-          </SidebarProvider>
-
-          <SanityLive />
+            <SanityLive />
           </ThemeProvider>
         </body>
       </html>
