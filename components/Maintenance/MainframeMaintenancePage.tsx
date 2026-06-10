@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ContactForm } from "../ContactForm";
+import { HeaderAvatar } from "../HeadshotAvatar";
 
 const TYPEWRITER_TEXT =
   "Glad you stopped in. we are currently performing some maintenance work on the site, check back soon!";
@@ -246,16 +247,23 @@ export default function MainframeMaintenancePage() {
         <div className="flex items-center justify-end">
           <button
             type="button"
-            className="maintenance-logo flex items-center gap-3 text-[21px] tracking-tight text-black sm:text-[26px]"
+            className="group maintenance-logo flex items-center gap-3 text-[21px] tracking-tight text-black sm:text-[26px]"
             aria-label="Mainframe"
           >
-            <span>Daniel Alswanger</span>
+
+            <HeaderAvatar />
+            <span className="hidden sm:inline transition-all
+      duration-300
+      group-hover:opacity-70">
+        Daniel Alswanger
+        </span>
             <span
-              className="select-none text-[25px] leading-none sm:text-[30px]"
+              className="select-none text-[25px] leading-none sm:text-[30px] hidden sm:inline"
               style={{ letterSpacing: "-0.02em" }}
               aria-hidden="true"
+              
             >
-              ✳︎
+              
             </span>
           </button>
 
@@ -334,7 +342,7 @@ export default function MainframeMaintenancePage() {
         </button>
       </div>
 
-      <main className="relative z-10 flex h-screen flex-col justify-end overflow-hidden px-5 pb-12 sm:px-8 md:px-10 md:justify-center md:pb-0">
+      <main className="relative z-10 flex h-screen flex-col justify-end overflow-hidden pl-10 pr-5 pt-32 pb-12 sm:pl-16 sm:pr-8 md:pl-24 md:pr-10 md:justify-center md:pb-0">
         <div className="max-w-xl">
           <p
             className="pointer-events-none mb-5 select-none whitespace-pre-line text-black sm:mb-6"
@@ -353,7 +361,7 @@ export default function MainframeMaintenancePage() {
         <h1
   className="mb-6 max-w-4xl text-black"
   style={{
-    fontSize: "clamp(48px, 20vw, 40px)",
+    fontSize: "clamp(24px, 20vw, 40px)",
     lineHeight: 0.95,
     fontWeight: 500,
     letterSpacing: "-0.05em",
@@ -366,7 +374,7 @@ export default function MainframeMaintenancePage() {
 </h1>
 
           <div
-            className="flex flex-wrap gap-y-1"
+            className="flex flex-wrap gap-y-1 mb-30"
             style={pillStyle(actionsVisible)}
 
           >
