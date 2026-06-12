@@ -373,15 +373,16 @@ export default function MainframeMaintenancePage() {
   )}
 </h1>
 
-          <div
+         
+        </div>
+      </main>
+       <div
             className="flex flex-wrap gap-y-1 mb-30"
             style={pillStyle(actionsVisible)}
 
           >
             <ContactForm/>
           </div>
-        </div>
-      </main>
     </div>
   );
 }
