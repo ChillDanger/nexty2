@@ -220,7 +220,7 @@ export default function MainframeMaintenancePage() {
   });
 
   return (
-    <div className="maintenance-shell relative min-h-screen overflow-hidden bg-white text-black">
+    <div className="maintenance-shell relative min-h-screen bg-white text-black">
       <video
         ref={videoRef}
         className="pointer-events-none fixed inset-0 z-0 h-full w-full object-cover"
@@ -342,7 +342,7 @@ export default function MainframeMaintenancePage() {
         </button>
       </div>
 
-      <main className="relative z-10 flex h-screen flex-col justify-end overflow-hidden pl-10 pr-5 pt-32 pb-12 sm:pl-16 sm:pr-8 md:pl-24 md:pr-10 md:justify-center md:pb-0">
+      <main className="relative z-10 flex min-h-screen flex-col justify-end pl-10 pr-5 pt-32 pb-12 sm:pl-16 sm:pr-8 md:pl-24 md:pr-10 md:justify-center md:pb-0">
         <div className="max-w-xl">
           <p
             className="pointer-events-none mb-5 select-none whitespace-pre-line text-black sm:mb-6"
