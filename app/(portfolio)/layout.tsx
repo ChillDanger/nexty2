@@ -82,7 +82,7 @@ export default function RootLayout({
     return (
       <html lang="en">
         {fontLinks}
-        <body className="maintenance-shell overflow-hidden bg-white text-black">
+        <body className="maintenance-shell  bg-white text-black">
           <MainframeMaintenancePage />
         </body>
       </html>
