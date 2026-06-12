@@ -113,13 +113,12 @@ export default function MainframeMaintenancePage() {
       return undefined;
     }
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = menuOpen ? "hidden" : "";
 
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [menuOpen]);
+  return () => {
+    document.body.style.overflow = "";
+  };
+}, [menuOpen]);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
