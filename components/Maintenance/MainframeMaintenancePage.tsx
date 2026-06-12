@@ -371,17 +371,16 @@ export default function MainframeMaintenancePage() {
     <span className="maintenance-cursor ml-1 inline-block h-[0.9em] w-[3px] bg-black align-middle" />
   )}
 </h1>
-
-         
-        </div>
-      </main>
-       <div
+ <div
             className="flex flex-wrap gap-y-1 mb-30"
             style={pillStyle(actionsVisible)}
 
           >
             <ContactForm/>
           </div>
+         
+        </div>
+      </main>
     </div>
   );
 }
