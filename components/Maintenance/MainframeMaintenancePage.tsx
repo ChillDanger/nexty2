@@ -7,7 +7,6 @@ import { HeaderAvatar } from "../HeadshotAvatar";
 
 const TYPEWRITER_TEXT =
   "Glad you stopped in. we are currently performing some maintenance work on the site, check back soon!";
-<ContactForm />
 const EMAIL_ADDRESS = "hello@mainframe.co";
 const VIDEO_URL =
   "/videos/robot_1080p_optimized.mp4";

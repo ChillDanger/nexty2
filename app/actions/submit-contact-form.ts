@@ -4,6 +4,8 @@ import { dataset, projectId } from "@/sanity/env";
 import { serverClient } from "@/sanity/lib/serverClient";
 
 export async function submitContactForm(formData: FormData) {
+  console.log("CONTACT FORM HIT");
+
   try {
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
