@@ -1,9 +1,17 @@
 export async function GET() {
+  const envKeys = Object.keys(process.env)
+    .filter(
+      (key) =>
+        key.includes("SANITY") ||
+        key.includes("AMPLIFY") ||
+        key.includes("AWS")
+    )
+    .sort();
+
   return Response.json({
     tokenExists: !!process.env.SANITY_API_TOKEN,
-    tokenPrefix: process.env.SANITY_API_TOKEN?.slice(0, 5) ?? null,
-    sanityVars: Object.keys(process.env).filter((key) =>
-      key.includes("SANITY")
-    ),
+    tokenLength: process.env.SANITY_API_TOKEN?.length ?? 0,
+    envKeys,
+    nodeEnv: process.env.NODE_ENV,
   });
 }
