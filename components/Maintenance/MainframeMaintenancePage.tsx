@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { ContactForm } from "../ContactForm";
 import { HeaderAvatar } from "../HeadshotAvatar";
 
+
 const TYPEWRITER_TEXT =
   "Glad you stopped in. we are currently performing some maintenance work on the site, check back soon!";
 <ContactForm />
@@ -244,13 +245,13 @@ export default function MainframeMaintenancePage() {
 
       <header className="fixed inset-x-0 top-0 z-10 px-5 py-4 sm:px-8 sm:py-5">
         <div className="flex items-center justify-end">
-          <button
+          <HeaderAvatar />
+          {/* <button
             type="button"
             className="group maintenance-logo flex items-center gap-3 text-[21px] tracking-tight text-black sm:text-[26px]"
             aria-label="Mainframe"
           >
 
-            <HeaderAvatar />
             <span className="hidden sm:inline transition-all
       duration-300
       group-hover:opacity-70">
@@ -264,7 +265,7 @@ export default function MainframeMaintenancePage() {
             >
               
             </span>
-          </button>
+          </button> */}
 
           <nav className="hidden items-center gap-1 text-[23px] text-black md:flex">
             {navLinks.map((link, index) => (
