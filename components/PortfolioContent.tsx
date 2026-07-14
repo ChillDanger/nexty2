@@ -1,3 +1,4 @@
+import Home from "@/app/(portfolio)/recipes/page";
 import { AboutSection } from "./sections/AboutSection";
 import { AchievementsSection } from "./sections/AchievementsSection";
 import { BlogSection } from "./sections/BlogSection";
@@ -10,12 +11,16 @@ import { ProjectsSection } from "./sections/ProjectsSection";
 import { ServicesSection } from "./sections/ServicesSection";
 import { SkillsSection } from "./sections/SkillsSection";
 import { TestimonialsSection } from "./sections/TestimonialsSection";
+import Homepageclassic from "./sections/homepageclassic";
+import { RecipesSection } from "./sections/RecipesSection";
 
 async function PortfolioContent() {
   return (
     <>
       <HeroSection />
-      <AboutSection />
+      {/* <Homepageclassic /> */}
+      <RecipesSection />
+      {/* <AboutSection /> */}
       <TestimonialsSection />
       {/* <SkillsSection /> */}
       {/* <ExperienceSection />

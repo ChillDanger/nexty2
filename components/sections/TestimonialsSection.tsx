@@ -30,7 +30,7 @@ export async function TestimonialsSection() {
     quote: testimonial.testimonial || "",
     name: testimonial.name || "Anonymous",
     designation: testimonial.company
-      ? `${testimonial.position} at ${testimonial.company}`
+      ? `${testimonial.position} ${testimonial.company}`
       : testimonial.position || "",
     // Use avatar for the main image
     src: testimonial.avatar
@@ -47,10 +47,10 @@ export async function TestimonialsSection() {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-8">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Client Testimonials
+            Photo album
           </h2>
           <p className="text-xl text-muted-foreground">
-            What people say about working with me
+            A collection of my favorite moments
           </p>
         </div>
 

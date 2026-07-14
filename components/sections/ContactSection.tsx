@@ -26,8 +26,7 @@ export async function ContactSection() {
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h2>
           <p className="text-xl text-muted-foreground">
-            Wherever you are in the world, let&apos;s work together on your next
-            project.
+            Wherever you are in the world, let&apos;s connect 
           </p>
         </div>
 
@@ -58,24 +57,6 @@ export async function ContactSection() {
                 </div>
               )}
 
-              {profile.phone && (
-                <div className="flex items-start gap-3 @md/info:gap-4">
-                  <div className="w-10 h-10 @md/info:w-12 @md/info:h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <span className="text-xl @md/info:text-2xl">📱</span>
-                  </div>
-                  <div className="min-w-0">
-                    <h4 className="font-semibold mb-1 text-sm @md/info:text-base">
-                      Phone
-                    </h4>
-                    <Link
-                      href={`tel:${profile.phone}`}
-                      className="text-muted-foreground hover:text-primary transition-colors text-xs @md/info:text-sm"
-                    >
-                      {profile.phone}
-                    </Link>
-                  </div>
-                </div>
-              )}
 
               {profile.location && (
                 <div className="flex items-start gap-3 @md/info:gap-4">
@@ -119,16 +100,7 @@ export async function ContactSection() {
                         LinkedIn
                       </Link>
                     )}
-                    {profile.socialLinks.twitter && (
-                      <Link
-                        href={profile.socialLinks.twitter}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-1.5 @md/info:px-4 @md/info:py-2 rounded-lg border hover:bg-accent transition-colors text-xs @md/info:text-sm"
-                      >
-                        Twitter
-                      </Link>
-                    )}
+                    
                     {profile.socialLinks.website && (
                       <Link
                         href={profile.socialLinks.website}
@@ -147,16 +119,6 @@ export async function ContactSection() {
                         className="px-3 py-1.5 @md/info:px-4 @md/info:py-2 rounded-lg border hover:bg-accent transition-colors text-xs @md/info:text-sm"
                       >
                         Medium
-                      </Link>
-                    )}
-                    {profile.socialLinks.devto && (
-                      <Link
-                        href={profile.socialLinks.devto}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-1.5 @md/info:px-4 @md/info:py-2 rounded-lg border hover:bg-accent transition-colors text-xs @md/info:text-sm"
-                      >
-                        Dev.to
                       </Link>
                     )}
                     {profile.socialLinks.youtube && (

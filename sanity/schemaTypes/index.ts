@@ -12,6 +12,7 @@ import service from "./service";
 import siteSettings from "./siteSettings";
 import skill from "./skill";
 import testimonial from "./testimonial";
+import recipe from "./recipe";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -24,6 +25,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     certification,
     achievement,
     blog,
+    recipe,
     service,
     contact,
     siteSettings,

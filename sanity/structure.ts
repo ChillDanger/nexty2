@@ -107,25 +107,31 @@ export const structure: StructureResolver = (S) =>
 
       // Content & Community
       S.listItem()
-        .title("Content & Community")
-        .icon(DocumentsIcon)
-        .child(
-          S.list()
-            .title("Content & Community")
-            .items([
-              S.listItem()
-                .title("Blog Posts")
-                .icon(ComposeIcon)
-                .schemaType("blog")
-                .child(S.documentTypeList("blog").title("Blog Posts")),
+  .title("Content & Community")
+  .icon(DocumentsIcon)
+  .child(
+    S.list()
+      .title("Content & Community")
+      .items([
+        S.listItem()
+          .title("Blog Posts")
+          .icon(ComposeIcon)
+          .schemaType("blog")
+          .child(S.documentTypeList("blog").title("Blog Posts")),
 
-              S.listItem()
-                .title("Testimonials")
-                .icon(CommentIcon)
-                .schemaType("testimonial")
-                .child(S.documentTypeList("testimonial").title("Testimonials")),
-            ]),
-        ),
+        S.listItem()
+          .title("Recipes")
+          .icon(BookIcon)
+          .schemaType("recipe")
+          .child(S.documentTypeList("recipe").title("Recipes")),
+
+        S.listItem()
+          .title("Testimonials")
+          .icon(CommentIcon)
+          .schemaType("testimonial")
+          .child(S.documentTypeList("testimonial").title("Testimonials")),
+      ]),
+  ),
 
       S.divider(),
 

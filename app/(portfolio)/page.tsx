@@ -4,7 +4,7 @@ export default function Home() {
   return (
 
     
-    <main className="pt-30">
+    <main className="pt-8 pb-20">
       <PortfolioContent />
       <h1 className="text-4xl font-bold text-aquamarine-800 transition-colors duration-300 hover:text-blue-500 dark:text-gray-200 dark:hover:text-blue-400">
         Daniel Alswanger

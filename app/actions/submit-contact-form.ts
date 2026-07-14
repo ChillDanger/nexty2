@@ -4,7 +4,6 @@ import { dataset, projectId } from "@/sanity/env";
 import { serverClient } from "@/sanity/lib/serverClient";
 
 export async function submitContactForm(formData: FormData) {
-  console.log("CONTACT FORM HIT");
 
   try {
     const name = formData.get("name") as string;
@@ -19,12 +18,7 @@ export async function submitContactForm(formData: FormData) {
         error: "Please fill in all required fields",
       };
     }
-console.log({
-  projectId,
-  dataset,
-  tokenExists: !!process.env.SANITY_API_TOKEN,
-  tokenPrefix: process.env.SANITY_API_TOKEN?.slice(0, 10),
-});
+
     // Create the document in Sanity
     const result = await serverClient.create({
       _type: "contact",

@@ -193,6 +193,36 @@ export type Slug = {
   source?: string;
 };
 
+export type Recipe = {
+  _id: string;
+  _type: "recipe";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  image?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  description?: string;
+  prepTime?: number;
+  cookTime?: number;
+  servings?: number;
+  difficulty?: "Easy" | "Medium" | "Hard";
+  category?: "breakfast" | "lunch" | "dinner" | "dessert" | "snack" | "drink";
+  ingredients?: Array<{
+    quantity?: number;
+    unit?: string;
+    ingredient?: string;
+    _key: string;
+  }>;
+  directions?: Array<string>;
+};
+
 export type Blog = {
   _id: string;
   _type: "blog";
@@ -632,6 +662,7 @@ export type AllSanitySchemaTypes =
   | SkillReference
   | Service
   | Slug
+  | Recipe
   | Blog
   | Achievement
   | Certification
@@ -649,6 +680,38 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageAsset
   | Geopoint;
+
+// Source: app/(portfolio)/recipes/[slug]/page.tsx
+// Variable: RECIPE_QUERY
+// Query: *[_type == "recipe" && slug.current == $slug][0]{    _id,    title,    slug,    description,    image,    ingredients,    directions,    category,  }
+export type RECIPE_QUERY_RESULT = {
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  description: string | null;
+  image: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  ingredients: Array<{
+    quantity?: number;
+    unit?: string;
+    ingredient?: string;
+    _key: string;
+  }> | null;
+  directions: Array<string> | null;
+  category:
+    | "breakfast"
+    | "dessert"
+    | "dinner"
+    | "drink"
+    | "lunch"
+    | "snack"
+    | null;
+} | null;
 
 // Source: components/Chat/ChatWrapper.tsx
 // Variable: CHAT_PROFILE_QUERY
@@ -835,6 +898,24 @@ export type CHAT_PROFILE_QUERY_RESULT =
     }
   | {
       _id: "singleton-profile";
+      _type: "recipe";
+      _createdAt: string;
+      _updatedAt: string;
+      _rev: string;
+      firstName: null;
+      lastName: null;
+      headline: null;
+      shortBio: null;
+      email: null;
+      phone: null;
+      location: null;
+      availability: null;
+      socialLinks: null;
+      yearsOfExperience: null;
+      profileImage: null;
+    }
+  | {
+      _id: "singleton-profile";
       _type: "sanity.fileAsset";
       _createdAt: string;
       _updatedAt: string;
@@ -951,6 +1032,31 @@ export type NAVIGATION_QUERY_RESULT = Array<{
   href: string | null;
   icon: string | null;
   isExternal: boolean | null;
+}>;
+
+// Source: components/recipes/RecipeGrid.tsx
+// Variable: RECIPES_QUERY
+// Query: *[_type == "recipe"]{    _id,    title,    slug,    description,    image,    category  }
+export type RECIPES_QUERY_RESULT = Array<{
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  description: string | null;
+  image: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  category:
+    | "breakfast"
+    | "dessert"
+    | "dinner"
+    | "drink"
+    | "lunch"
+    | "snack"
+    | null;
 }>;
 
 // Source: components/sections/AboutSection.tsx
@@ -1537,8 +1643,10 @@ export type TESTIMONIALS_QUERY_RESULT = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
+    '\n  *[_type == "recipe" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    description,\n    image,\n    ingredients,\n    directions,\n    category,\n  }\n': RECIPE_QUERY_RESULT;
     '*[_id == "singleton-profile"][0]{\n    _id,\n    _type,\n    _createdAt,\n    _updatedAt,\n    _rev,\n    firstName,\n    lastName,\n    headline,\n    shortBio,\n    email,\n    phone,\n    location,\n    availability,\n    socialLinks,\n    yearsOfExperience,\n    profileImage\n  }': CHAT_PROFILE_QUERY_RESULT;
     '*[_type == "navigation"] | order(order asc){\n  title,\n  href,\n  icon,\n  isExternal\n}': NAVIGATION_QUERY_RESULT;
+    '\n  *[_type == "recipe"]{\n    _id,\n    title,\n    slug,\n    description,\n    image,\n    category\n  }\n': RECIPES_QUERY_RESULT;
     '*[_id == "singleton-profile"][0]{\n  firstName,\n  lastName,\n  fullBio,\n  yearsOfExperience,\n  stats,\n  email,\n  phone,\n  location\n}': ABOUT_QUERY_RESULT;
     '*[_type == "achievement"] | order(date desc){\n  title,\n  type,\n  issuer,\n  date,\n  description,\n  image,\n  url,\n  featured,\n  order\n}': ACHIEVEMENTS_QUERY_RESULT;
     '*[_type == "blog"] | order(publishedAt desc){\n  title,\n  slug,\n  excerpt,\n  category,\n  tags,\n  publishedAt,\n  readTime,\n  featuredImage\n}': BLOG_QUERY_RESULT;
