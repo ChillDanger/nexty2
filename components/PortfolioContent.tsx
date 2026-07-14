@@ -1,4 +1,4 @@
-import Home from "@/app/(portfolio)/recipes/page";
+// import Home from "@/app/(portfolio)/recipes/page";
 import { AboutSection } from "./sections/AboutSection";
 import { AchievementsSection } from "./sections/AchievementsSection";
 import { BlogSection } from "./sections/BlogSection";
@@ -12,7 +12,7 @@ import { ServicesSection } from "./sections/ServicesSection";
 import { SkillsSection } from "./sections/SkillsSection";
 import { TestimonialsSection } from "./sections/TestimonialsSection";
 import Homepageclassic from "./sections/homepageclassic";
-import { RecipesSection } from "./sections/RecipesSection";
+import { RecipesSection } from "./sections/recipesSection";
 
 async function PortfolioContent() {
   return (

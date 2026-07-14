@@ -73,10 +73,10 @@
   "socialLinks": {
     "github": "https://github.com/ChillDanger",
     "linkedin": "https://linkedin.com/in/DanielAlswanger",
-    "twitter": "https://twitter.com/johndoe",
+    "twitter": ,
     "website": "https://danielalswanger.com",
     "instagram": "https://instagram.com/danielalswanger",
-    "News Article": "https://dev.to/johndoe"
+    "News Article": ""
   },
   "yearsOfExperience": 7,
   "stats": [
