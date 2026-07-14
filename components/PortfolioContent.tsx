@@ -1,4 +1,4 @@
-// import Home from "@/app/(portfolio)/recipes/page";
+import Home from "@/app/(portfolio)/recipes/page";
 import { AboutSection } from "./sections/AboutSection";
 import { AchievementsSection } from "./sections/AchievementsSection";
 import { BlogSection } from "./sections/BlogSection";
