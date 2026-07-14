@@ -118,7 +118,7 @@ export async function ContactSection() {
                         rel="noopener noreferrer"
                         className="px-3 py-1.5 @md/info:px-4 @md/info:py-2 rounded-lg border hover:bg-accent transition-colors text-xs @md/info:text-sm"
                       >
-                        Medium
+                        Instagram
                       </Link>
                     )}
                     {profile.socialLinks.youtube && (
