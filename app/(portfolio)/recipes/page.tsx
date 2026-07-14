@@ -1,5 +1,7 @@
 import RecipeGrid from "@/components/recipes/RecipeGrid";
 
+export const dynamic = "force-dynamic";
+
 export default function RecipesPage() {
   return (
     <main className="mx-auto max-w-7xl px-6 py-16">
