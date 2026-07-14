@@ -12,7 +12,7 @@ import { ServicesSection } from "./sections/ServicesSection";
 import { SkillsSection } from "./sections/SkillsSection";
 import { TestimonialsSection } from "./sections/TestimonialsSection";
 import Homepageclassic from "./sections/homepageclassic";
-import { RecipesSection } from "./sections/recipesSection";
+import { RecipesSection } from "./sections/RecipesSection";
 
 async function PortfolioContent() {
   return (
