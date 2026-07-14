@@ -2,6 +2,7 @@ import { defineQuery } from "next-sanity";
 import { sanityFetch } from "@/sanity/lib/live";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
+import type { RECIPES_QUERY_RESULT } from "@/sanity.types";
 
 const RECIPES_QUERY = defineQuery(`
   *[_type == "recipe"]{
@@ -52,9 +53,11 @@ function formatQuantity(value: number): string {
 }
 
 export async function RecipesSection() {
-  const { data: recipes } = await sanityFetch({
-    query: RECIPES_QUERY,
-  });
+  const { data: recipes } = (await sanityFetch({
+  query: RECIPES_QUERY,
+})) as {
+  data: RECIPES_QUERY_RESULT;
+};
 
   if (!recipes?.length) return null;
 
