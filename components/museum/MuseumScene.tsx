@@ -1,7 +1,7 @@
 "use client";
 
 import { OrbitControls } from "@react-three/drei";
-import { Room } from "./Room";
+import { MainHall } from "./rooms/MainHall";
 import { Lighting } from "./Lighting";
 
 export function MuseumScene() {
@@ -9,7 +9,7 @@ export function MuseumScene() {
     <>
       <Lighting />
 
-      <Room />
+      <MainHall />
 
       <OrbitControls
         enablePan={false}
