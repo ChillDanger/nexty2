@@ -15,6 +15,48 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: schema.json
+export type SanityImageAssetReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+};
+
+export type Photo = {
+  _id: string;
+  _type: "photo";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  image?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  caption?: string;
+  album?: string;
+  dateTaken?: string;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+};
+
 export type Navigation = {
   _id: string;
   _type: "navigation";
@@ -26,13 +68,6 @@ export type Navigation = {
   icon?: string;
   isExternal?: boolean;
   order?: number;
-};
-
-export type SanityImageAssetReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
 };
 
 export type SiteSettings = {
@@ -96,22 +131,6 @@ export type SiteSettings = {
   };
   maintenanceMode?: boolean;
   maintenanceMessage?: string;
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
 };
 
 export type Contact = {
@@ -653,11 +672,12 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
-  | Navigation
   | SanityImageAssetReference
-  | SiteSettings
+  | Photo
   | SanityImageCrop
   | SanityImageHotspot
+  | Navigation
+  | SiteSettings
   | Contact
   | SkillReference
   | Service
@@ -712,6 +732,24 @@ export type RECIPE_QUERY_RESULT = {
     | "snack"
     | null;
 } | null;
+
+// Source: app/test/page.tsx
+// Variable: QUERY
+// Query: *[_id == "singleton-profile"][0]{    firstName,    email  }
+export type QUERY_RESULT =
+  | {
+      firstName: null;
+      email: null;
+    }
+  | {
+      firstName: null;
+      email: string | null;
+    }
+  | {
+      firstName: string | null;
+      email: string | null;
+    }
+  | null;
 
 // Source: components/Chat/ChatWrapper.tsx
 // Variable: CHAT_PROFILE_QUERY
@@ -828,6 +866,24 @@ export type CHAT_PROFILE_QUERY_RESULT =
   | {
       _id: "singleton-profile";
       _type: "navigation";
+      _createdAt: string;
+      _updatedAt: string;
+      _rev: string;
+      firstName: null;
+      lastName: null;
+      headline: null;
+      shortBio: null;
+      email: null;
+      phone: null;
+      location: null;
+      availability: null;
+      socialLinks: null;
+      yearsOfExperience: null;
+      profileImage: null;
+    }
+  | {
+      _id: "singleton-profile";
+      _type: "photo";
       _createdAt: string;
       _updatedAt: string;
       _rev: string;
@@ -1644,6 +1700,7 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     '\n  *[_type == "recipe" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    description,\n    image,\n    ingredients,\n    directions,\n    category,\n  }\n': RECIPE_QUERY_RESULT;
+    '\n  *[_id == "singleton-profile"][0]{\n    firstName,\n    email\n  }\n': QUERY_RESULT;
     '*[_id == "singleton-profile"][0]{\n    _id,\n    _type,\n    _createdAt,\n    _updatedAt,\n    _rev,\n    firstName,\n    lastName,\n    headline,\n    shortBio,\n    email,\n    phone,\n    location,\n    availability,\n    socialLinks,\n    yearsOfExperience,\n    profileImage\n  }': CHAT_PROFILE_QUERY_RESULT;
     '*[_type == "navigation"] | order(order asc){\n  title,\n  href,\n  icon,\n  isExternal\n}': NAVIGATION_QUERY_RESULT;
     '\n  *[_type == "recipe"]{\n    _id,\n    title,\n    slug,\n    description,\n    image,\n    category\n  }\n': RECIPES_QUERY_RESULT;

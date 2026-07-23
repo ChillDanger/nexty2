@@ -15,7 +15,11 @@ const RECIPES_QUERY = defineQuery(`
     directions
   }
 `);
-function formatQuantity(value: number): string {
+function formatQuantity(value?: number | null): string {
+  if (value == null || Number.isNaN(value)) {
+    return "";
+  }
+
   const whole = Math.floor(value);
   const fraction = value - whole;
 
@@ -31,23 +35,12 @@ function formatQuantity(value: number): string {
     "0.875": "7/8",
   };
 
-  const roundedFraction =
-    Math.round(fraction * 1000) / 1000;
+  const roundedFraction = Math.round(fraction * 1000) / 1000;
+  const fractionString = fractions[roundedFraction.toString()];
 
-  const fractionString =
-    fractions[roundedFraction.toString()];
-
-  if (whole === 0 && fractionString) {
-    return fractionString;
-  }
-
-  if (whole > 0 && fractionString) {
-    return `${whole} ${fractionString}`;
-  }
-
-  if (fraction === 0) {
-    return whole.toString();
-  }
+  if (whole === 0 && fractionString) return fractionString;
+  if (whole > 0 && fractionString) return `${whole} ${fractionString}`;
+  if (fraction === 0) return whole.toString();
 
   return value.toFixed(2).replace(/\.00$/, "");
 }
