@@ -1,6 +1,6 @@
 import { defineField, defineType } from "sanity";
 
-export const photoType = defineType({
+export default defineType({
   name: "photo",
   title: "Photo",
   type: "document",

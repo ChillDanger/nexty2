@@ -125,6 +125,12 @@ export const structure: StructureResolver = (S) =>
           .schemaType("recipe")
           .child(S.documentTypeList("recipe").title("Recipes")),
 
+          S.listItem()
+            .title("Photos")
+  .icon(DocumentIcon)
+  .schemaType("photo")
+  .child(S.documentTypeList("photo").title("Photos")),
+
         S.listItem()
           .title("Testimonials")
           .icon(CommentIcon)
