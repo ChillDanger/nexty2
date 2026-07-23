@@ -1,3 +1,109 @@
+"use client";
+
+import { cn } from "@/lib/utils";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+
+const MouseEnterContext = createContext<
+  [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined
+>(undefined);
+
+export function CardContainer({
+  children,
+  className,
+  containerClassName,
+}: {
+  children?: React.ReactNode;
+  className?: string;
+  containerClassName?: string;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isMouseEntered, setIsMouseEntered] = useState(false);
+
+  const handleMouseMove = (
+    e: React.MouseEvent<HTMLDivElement>
+  ) => {
+    if (!containerRef.current) return;
+
+    const { left, top, width, height } =
+      containerRef.current.getBoundingClientRect();
+
+    const x = (e.clientX - left - width / 2) / 25;
+    const y = (e.clientY - top - height / 2) / 25;
+
+    containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+  };
+
+  const handleMouseEnter = () => {
+    setIsMouseEntered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsMouseEntered(false);
+
+    if (!containerRef.current) return;
+
+    containerRef.current.style.transform =
+      "rotateY(0deg) rotateX(0deg)";
+  };
+
+  return (
+    <MouseEnterContext.Provider
+      value={[isMouseEntered, setIsMouseEntered]}
+    >
+      <div
+        className={cn(
+          "flex items-center justify-center py-20",
+          containerClassName
+        )}
+        style={{
+          perspective: "1000px",
+        }}
+      >
+        <div
+          ref={containerRef}
+          onMouseMove={handleMouseMove}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className={cn(
+            "relative transition-all duration-200 ease-linear",
+            className
+          )}
+          style={{
+            transformStyle: "preserve-3d",
+          }}
+        >
+          {children}
+        </div>
+      </div>
+    </MouseEnterContext.Provider>
+  );
+}
+
+export function CardBody({
+  children,
+  className,
+}: {
+  children?: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "relative h-full w-full [transform-style:preserve-3d]",
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
+}
+
 type CardItemProps<T extends React.ElementType = "div"> = {
   as?: T;
   children?: React.ReactNode;
@@ -8,7 +114,10 @@ type CardItemProps<T extends React.ElementType = "div"> = {
   rotateX?: number | string;
   rotateY?: number | string;
   rotateZ?: number | string;
-} & Omit<React.ComponentPropsWithoutRef<T>, "as" | "children" | "className">;
+} & Omit<
+  React.ComponentPropsWithoutRef<T>,
+  "as" | "children" | "className"
+>;
 
 export function CardItem<T extends React.ElementType = "div">({
   as,
@@ -30,19 +139,25 @@ export function CardItem<T extends React.ElementType = "div">({
   useEffect(() => {
     if (!ref.current) return;
 
-    ref.current.style.transform = isMouseEntered
-      ? `translateX(${translateX}px)
-         translateY(${translateY}px)
-         translateZ(${translateZ}px)
-         rotateX(${rotateX}deg)
-         rotateY(${rotateY}deg)
-         rotateZ(${rotateZ}deg)`
-      : `translateX(0px)
-         translateY(0px)
-         translateZ(0px)
-         rotateX(0deg)
-         rotateY(0deg)
-         rotateZ(0deg)`;
+    if (isMouseEntered) {
+      ref.current.style.transform = `
+        translateX(${translateX}px)
+        translateY(${translateY}px)
+        translateZ(${translateZ}px)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+        rotateZ(${rotateZ}deg)
+      `;
+    } else {
+      ref.current.style.transform = `
+        translateX(0px)
+        translateY(0px)
+        translateZ(0px)
+        rotateX(0deg)
+        rotateY(0deg)
+        rotateZ(0deg)
+      `;
+    }
   }, [
     isMouseEntered,
     translateX,
@@ -58,11 +173,23 @@ export function CardItem<T extends React.ElementType = "div">({
     {
       ref,
       className: cn(
-        "w-fit transition duration-200 ease-linear",
+        "transition duration-200 ease-linear",
         className
       ),
       ...props,
     },
     children
   );
+}
+
+export function useMouseEnter() {
+  const context = useContext(MouseEnterContext);
+
+  if (!context) {
+    throw new Error(
+      "useMouseEnter must be used within a CardContainer"
+    );
+  }
+
+  return context;
 }
