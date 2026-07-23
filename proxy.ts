@@ -1,5 +1,10 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 
+console.log({
+  hasSecret: !!process.env.CLERK_SECRET_KEY,
+  hasPublishable: !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+});
+
 export default clerkMiddleware();
 
 export const config = {
