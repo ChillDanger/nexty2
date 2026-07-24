@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 import { SignInButton } from "@clerk/nextjs";
-import { MuseumCanvas } from "@/components/museum/MuseumCanvas";
+import MuseumCanvas from "@/components/museum/MuseumCanvas";
 
 export default async function GalleryPage() {
   const { userId } = await auth();

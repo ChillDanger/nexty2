@@ -1,3 +1,5 @@
+import { Artwork } from "../artwork/Artwork";
+
 export function MainHall() {
   return (
     <>
@@ -36,6 +38,22 @@ export function MainHall() {
         <boxGeometry args={[18, 8, 0.25]} />
         <meshStandardMaterial color="#f7f7f7" />
       </mesh>
+
+<Artwork position={[0, 4, -29.8]} />
+
+<Artwork position={[-5, 4, -29.8]} />
+
+<Artwork position={[5, 4, -29.8]} />
+
+<Artwork
+  position={[-8.8, 4, 0]}
+  rotation={[0, Math.PI / 2, 0]}
+/>
+
+<Artwork
+  position={[8.8, 4, 0]}
+  rotation={[0, -Math.PI / 2, 0]}
+/>
     </>
   );
 }

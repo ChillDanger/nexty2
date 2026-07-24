@@ -1,21 +1,17 @@
 "use client";
 
-import { OrbitControls } from "@react-three/drei";
 import { MainHall } from "./rooms/MainHall";
-import { Lighting } from "./Lighting";
+import Lighting from "./Lighting";
+import Player from "./Player";
 
-export function MuseumScene() {
+export default function MuseumScene() {
   return (
     <>
       <Lighting />
 
       <MainHall />
 
-      <OrbitControls
-        enablePan={false}
-        minDistance={2}
-        maxDistance={20}
-      />
+      <Player />
     </>
   );
 }

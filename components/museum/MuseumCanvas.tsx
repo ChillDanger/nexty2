@@ -1,15 +1,15 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { MuseumScene } from "./MuseumScene";
+import MuseumScene from "./MuseumScene";
 
-export function MuseumCanvas() {
+export default function MuseumCanvas() {
   return (
     <Canvas
       shadows
       camera={{
-        position: [0, 1.7, 8],
-        fov: 65,
+        position: [0, 2, 12],
+        fov: 75,
       }}
     >
       <MuseumScene />
