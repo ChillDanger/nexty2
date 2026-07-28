@@ -1,4 +1,4 @@
-import { Artwork } from "../artwork/Artwork";
+
 import { RigidBody } from "@react-three/rapier";
 
 export function MainHall() {
@@ -51,21 +51,7 @@ export function MainHall() {
         <meshStandardMaterial color="#f7f7f7" />
       </mesh>
       </RigidBody>
-<Artwork position={[0, 4, -29.8]} />
 
-<Artwork position={[-5, 4, -29.8]} />
-
-<Artwork position={[5, 4, -29.8]} />
-
-<Artwork
-  position={[-8.8, 4, 0]}
-  rotation={[0, Math.PI / 2, 0]}
-/>
-
-<Artwork
-  position={[8.8, 4, 0]}
-  rotation={[0, -Math.PI / 2, 0]}
-/>
     </>
   );
 }
