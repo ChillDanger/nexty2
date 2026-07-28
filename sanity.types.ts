@@ -39,6 +39,10 @@ export type Photo = {
   caption?: string;
   album?: string;
   dateTaken?: string;
+  artist?: string;
+  featured?: boolean;
+  wall?: "back" | "left" | "right";
+  order?: number;
 };
 
 export type SanityImageCrop = {
@@ -1695,6 +1699,27 @@ export type TESTIMONIALS_QUERY_RESULT = Array<{
   linkedinUrl: string | null;
 }>;
 
+// Source: sanity/lib/queries/museum.ts
+// Variable: MUSEUM_PHOTOS_QUERY
+// Query: *[_type == "photo" && featured == true]| order(order asc) {  _id,  title,  artist,  caption,  album,  dateTaken,  wall,  order,  image}
+export type MUSEUM_PHOTOS_QUERY_RESULT = Array<{
+  _id: string;
+  title: string | null;
+  artist: string | null;
+  caption: string | null;
+  album: string | null;
+  dateTaken: string | null;
+  wall: "back" | "left" | "right" | null;
+  order: number | null;
+  image: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+}>;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
@@ -1716,5 +1741,6 @@ declare module "@sanity/client" {
     '*[_type == "service"] | order(order asc, _createdAt desc){\n  title,\n  slug,\n  icon,\n  shortDescription,\n  fullDescription,\n  features,\n  technologies[]->{name, category},\n  deliverables,\n  pricing,\n  timeline,\n  featured,\n  order\n}': SERVICES_QUERY_RESULT;
     '*[_type == "skill"] | order(category asc, order asc){\n  name,\n  category,\n  proficiency,\n  percentage,\n  yearsOfExperience,\n  color\n}': SKILLS_QUERY_RESULT;
     '*[_type == "testimonial" && featured == true] | order(order asc){\n  name,\n  position,\n  company,\n  testimonial,\n  rating,\n  date,\n  avatar,\n  companyLogo,\n  linkedinUrl\n}': TESTIMONIALS_QUERY_RESULT;
+    '\n*[_type == "photo" && featured == true]\n| order(order asc) {\n  _id,\n  title,\n  artist,\n  caption,\n  album,\n  dateTaken,\n  wall,\n  order,\n  image\n}\n': MUSEUM_PHOTOS_QUERY_RESULT;
   }
 }

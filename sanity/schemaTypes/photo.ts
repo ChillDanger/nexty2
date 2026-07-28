@@ -28,5 +28,34 @@ export default defineType({
       name: "dateTaken",
       type: "date",
     }),
+    defineField({
+  name: "artist",
+  title: "Artist",
+  type: "string",
+  initialValue: "Daniel Alswanger",
+}),
+defineField({
+  name: "featured",
+  title: "Featured in Museum",
+  type: "boolean",
+  initialValue: true,
+}),
+defineField({
+  name: "wall",
+  title: "Wall",
+  type: "string",
+  options: {
+    list: [
+      { title: "Back", value: "back" },
+      { title: "Left", value: "left" },
+      { title: "Right", value: "right" },
+    ],
+  },
+}),
+defineField({
+  name: "order",
+  title: "Display Order",
+  type: "number",
+}),
   ],
 });

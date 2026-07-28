@@ -1,7 +1,7 @@
 "use client";
 
-import { PointerLockControls } from "@react-three/drei";
+import PlayerControls from "./controls/PlayerControls";
 
 export default function Player() {
-  return <PointerLockControls />;
+  return <PlayerControls />;
 }
