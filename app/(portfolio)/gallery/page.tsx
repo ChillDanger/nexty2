@@ -36,7 +36,7 @@ export default async function GalleryPage() {
   //   );
   // }
 
-   const { data: photos } = await sanityFetch<MuseumPhoto[]>({
+   const { data: photos } = await sanityFetch({
   query: MUSEUM_PHOTOS_QUERY,
 });
 
