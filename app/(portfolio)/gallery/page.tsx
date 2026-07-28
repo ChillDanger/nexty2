@@ -6,6 +6,7 @@ import { MUSEUM_PHOTOS_QUERY } from "@/sanity/lib/queries/museum";
 import { MuseumProvider } from "@/components/museum/MuseumContext"; 
 import ArtworkInfo from "@/components/museum/artwork/ArtworkInfo";
 import MuseumUI from "@/components/museum/MuseumUI";
+import {MuseumPhoto} from "@/components/museum/types";
 
 export default async function GalleryPage() {
   // const { userId } = await auth();
@@ -35,16 +36,18 @@ export default async function GalleryPage() {
   //   );
   // }
 
-    const { data: photos } = await sanityFetch({
+   const { data: photos } = await sanityFetch<MuseumPhoto[]>({
   query: MUSEUM_PHOTOS_QUERY,
 });
+
+const museumPhotos = photos as MuseumPhoto[];
 
 console.log("Photos:", photos);
   
   return (
     <main className="relative h-screen w-screen overflow-hidden bg-black">
   <MuseumProvider>
-    <MuseumCanvas photos={photos} />
+    <MuseumCanvas photos={museumPhotos} />
 
     <ArtworkInfo />
 
